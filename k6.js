@@ -2,6 +2,8 @@
 import { sleep } from 'k6';
 
 
+let baseUrl = 'http://localhost:5013'
+
 
 export const options = {
 
@@ -20,7 +22,8 @@ export default function () {
 function GetAddresses() {
 
    let getParams = {
-      url: 'http://localhost:5013/AddressBook',
+      
+      url: `${baseUrl}/AddressBook`,
       payload: {},
       params: {},
       httpVerb: 'get'
@@ -33,7 +36,7 @@ function GetAddresses() {
 function GetWeatherForecast() {
 
    let getParams = {
-      url: 'http://localhost:5013/WeatherForecast',
+      url: `${baseUrl}/WeatherForecast`,
       payload: {},
       params: {},
       httpVerb: 'get'
@@ -47,7 +50,7 @@ function GetWeatherForecast() {
 function CreateAddresBook() {
 
    let postParams = {
-      url: 'http://localhost:5013/AddressBook',
+      url: `${baseUrl}/AddressBook`,
       payload: {},
       params: {},
       httpVerb:'post'
@@ -62,7 +65,7 @@ function CreateAddresBook() {
 function makeRequest(requestParams) {
 
    if (!requestParams && typeof requestParams !== 'object') {
-      console.log("Valid post params required")
+      console.log("Valid request params required")
       return
    }
 
